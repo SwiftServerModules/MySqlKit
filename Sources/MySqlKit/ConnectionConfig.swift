@@ -1,9 +1,33 @@
 public class ConnectionConfig {
-  var host: String
-  var port: Int32
+  let host: String
+  let port: Int32
 
-  init(host: String, port: Int32) {
-    self.host = host
-    self.port = port
+  private init(builder: Builder) {
+    self.host = builder.host!
+    self.port = builder.port!
+  }
+
+  static func builder() -> Builder {
+    return Builder.init()
+  }
+
+  public class Builder {
+    public var host: String? = nil
+    public var port: Int32? = nil
+    init() {
+    }
+
+    func host(host: String) -> Builder {
+      self.host = host
+      return self
+    }
+    func port(port: Int32) -> Builder {
+      self.port = port
+      return self
+    }
+    func build() -> ConnectionConfig {
+      return ConnectionConfig(builder: self)
+    }
+
   }
 }
