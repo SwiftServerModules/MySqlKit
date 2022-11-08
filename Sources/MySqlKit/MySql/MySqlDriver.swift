@@ -11,3 +11,14 @@ public class MySqlDriver: Driver {
     return MySqlConnection()
   }
 }
+
+@_cdecl("MySqlDriver")
+public func createPlugin() -> UnsafeMutableRawPointer {
+  return Unmanaged.passRetained(MySqlDriverBuilder()).toOpaque()
+}
+
+final class MySqlDriverBuilder: DriverBuilder {
+  override func build() -> Driver {
+    MySqlDriver()
+  }
+}
