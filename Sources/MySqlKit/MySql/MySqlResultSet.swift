@@ -4,6 +4,8 @@ import SQLBaseKit
 public class MySqlResultSet: ResultSet {
   let logger: Logger = Logger(label: "MySqlResultSet")
 
+  init() {}
+
   public func next() throws -> Bool {
     logger.info("Called method : next")
     return true

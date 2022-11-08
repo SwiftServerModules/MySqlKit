@@ -4,6 +4,8 @@ import SQLBaseKit
 public class MySqlConnection: Connection {
   let logger: Logger = Logger(label: "MySqlConnection")
 
+  init() {}
+
   public func createStatement() throws -> Statement {
     return MySqlStatement()
   }
